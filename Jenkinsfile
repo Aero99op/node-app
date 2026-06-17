@@ -1,17 +1,11 @@
 pipeline {
-    agent any
+agent any
+stages {
 
-    stages {
-        stage('Clone Code') {
-            steps {
-                echo 'Cloning code from GitHub...'
-            }
-        }
-        stage('Build Docker Image') {
-            steps {
-                echo 'Building Docker image...'
-                // Yahan baad mein apni docker build command daal dena
-            }
+    stage('Build Docker Image') {
+        steps {
+            sh 'docker build -t nodeapp:${BUILD_NUMBER} .'
         }
     }
+}
 }
